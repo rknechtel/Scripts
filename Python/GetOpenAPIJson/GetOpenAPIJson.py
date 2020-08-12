@@ -100,6 +100,7 @@ ScriptVersion = '1.0'
 
 #---------------------------------------------------------[Functions]--------------------------------------------------------
 
+
 # ###################################################################################
 # Function: InitGetOpenAPIJsonLogging
 # Description:  Initialize the GetOpenAPIJson logging
@@ -107,9 +108,19 @@ ScriptVersion = '1.0'
 #
 def InitGetOpenAPIJsonLogging():
   # Initialize the default logging system:
-  config.LogPath = "C:\Temp"
+  config.LogPath = "C:\Temp\Log"
   config.LogFile = "GetOpenAPIJson.log" 
   #print("Log File Name = " + os.path.join(config.LogPath, config.LogFile))
+  
+  # Check if Log directory exists, if it doens't create it
+  DirExists = os.path.isdir(config.LogPath)
+  if DirExists==False:
+    try:
+      os.mkdir(config.LogPath)
+    except OSError:
+      print("Creation of the directory %s failed" % config.LogPath)
+    else:
+      print("Successfully created the directory %s" % config.LogPath)    
 
   # For Info and up logging
   GetOpenAPIJsonLogger = genfunc.CreateLogger(__name__, os.path.join(config.LogPath, config.LogFile),config.LogLevel)

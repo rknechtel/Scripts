@@ -84,6 +84,16 @@ def InitScriptLogging():
   LogFile = "MyScript.log" 
   #print("Log File Name = " + os.path.join(LogPath, LogFile))
   
+  # Check if Log directory exists, if it doens't create it
+  DirExists = os.path.isdir(config.LogPath)
+  if DirExists==False:
+    try:
+      os.mkdir(config.LogPath)
+    except OSError:
+      print("Creation of the directory %s failed" % config.LogPath)
+    else:
+      print("Successfully created the directory %s" % config.LogPath) 
+  
   # For Debug and up Logging:
   #ScriptLogger = genfunc.CreateLogger(__name__, os.path.join(LogPath, LogFile),logging.DEBUG)
   # For Info and up logging
