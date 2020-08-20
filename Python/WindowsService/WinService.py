@@ -2,8 +2,7 @@
 # Script: WinService.py
 # Author: Richard Knechtel
 # Date: 09/13/2018
-# Description: This script will handle deployments and undeployments and 
-#              rollbacks
+# Description: This script will handle working with Windows Services.
 # Version: 1.0
 #
 # LICENSE: 
