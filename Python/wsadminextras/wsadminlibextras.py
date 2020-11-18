@@ -2,6 +2,7 @@
 
    Script: wsadminlibextras.py
    Description: This is a library of extra methods for use with wsadminlib.py
+   Note: Used same formatting as wsadminlib.py to stay consistant.
    Author: Richard Knechtel
    Date: 11/10/2014
    License: Public Domain
