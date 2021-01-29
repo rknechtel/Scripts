@@ -40,8 +40,8 @@ set ERRORNUMBER=0
 set ERRORMESSAGE=Creating Project and Stream in Coverity Successful
 
 REM Set Coverity URL
-set COVERITYURL=https://MYSERVER.DOMAIN.com:8443
-set COVERITYHOST=MYSERVER.DOMAIN.com
+set COVERITYURL=https://COVERITYSERVER.MYDOMAIN.com:8443
+set COVERITYHOST= COVERITYSERVER.MYDOMAIN
 
 REM ****************************************************************************
 REM Create Project and Stream in Coverity
@@ -51,16 +51,6 @@ if "!STREAMNAME!"=="" set STREAMNAME=%PROJECTNAME%
 REM @echo PROJECTNAME = %PROJECTNAME%
 REM @echo STREAMNAME = %STREAMNAME%
 
-REM set COVERITY_HOME=S:\CovStatAnalysis
-REM set COVERITY_HOME=D:\opt\Coverity\CovStatAnalysis
-
-if "!COVERITY_HOME!"=="" (
-  REM This would be the path to your Coverity Analysis Tools install. 
-  REM It's best to map a drive to your Coverity install directory on the server.
-  REM Make sure On Coverity Server Share is setup:
-  REM New-SmbShare –Name Coverity –Path "D:\Program Files\Coverity\"
-  set COVERITY_HOME=S:\CovStatAnalysis
-) 
 
 REM Check if Project is already in Coverity:
 for /f %%i in ('"cov-manage-im --host %COVERITYHOST% --port 8080 --user %USER% --password %THEPASS% --mode projects --show --name %PROJECTNAME%" ^| findstr %PROJECTNAME%') do set "EXIST=%%i"
@@ -76,7 +66,7 @@ if "!EXIST!"=="" (
   @echo.
   cov-manage-im --mode projects --add --set name:"%PROJECTNAME%" --set desc:"%PROJECTNAME%" --url %COVERITYURL% --user %USER% --password %THEPASS% --on-new-cert trust
 
-  REM RSK 03/20/2020: Commenting out - project gets cretaed - false error reported
+  REM RSK 03/20/2020: Commenting out - project gets created - false error reported
   REM @echo error level=%ERRORLEVEL%
   REM if %ERRORLEVEL% NEQ 0 (
   REM   @echo Creating Project in Coverity Failed.
