@@ -5,7 +5,9 @@ REM Script: killservice.bat
 REM Author: Richard Knechtel
 REM Description: This will find the Process for the AppSrv and kill it.
 REM Date: 01/05/2016
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM *********************************************************************
 

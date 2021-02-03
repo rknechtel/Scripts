@@ -7,7 +7,10 @@ REM Author: Richard Knechtel
 REM Date: 04/05/2015
 REM Description: This script will allow you to do a Hot or Cold
 REM              Deploy/Undeploy/Rollback of an application.
-REM 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM   1) Need to have and AppSrv instance Alias configured in:
 REM      %JBOSS_HOME%\bin\jboss-cli.xml

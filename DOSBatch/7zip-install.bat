@@ -7,6 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 02/22/2018
 REM Description: This script will allow you to silently install 7-Zip
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM   Must be run as Administrator!!
 REM   Because it needs admin authority for doing installs

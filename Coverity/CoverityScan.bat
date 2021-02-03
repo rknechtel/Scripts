@@ -7,6 +7,9 @@ REM Date: 02/13/2020
 REM Description: This script will run the Coverity command line 
 REM              commands to scan a project and push defects to Coverity.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM ************************************************************************
 
 echo.

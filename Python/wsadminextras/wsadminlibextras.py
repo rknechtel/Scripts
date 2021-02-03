@@ -5,7 +5,7 @@
    Note: Used same formatting as wsadminlib.py to stay consistant.
    Author: Richard Knechtel
    Date: 11/10/2014
-   License: Public Domain
+   License: This script is in the public domain, free from copyrights or restrictions.
    
 """
 def createMQCF ( serverName, cfName, jndiName, type, qmgrName, qmgrHostname, qmgrPortNumber, qmgrSvrconnChannel, wmqTransportType, description ):

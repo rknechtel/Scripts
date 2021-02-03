@@ -3,9 +3,12 @@
 setlocal EnableDelayedExpansion
 REM ************************************************************************
 REM Script Name: adduser.bat
-REM Description: Add a user to a specific App Server Instance
 REM Author: Richard Knechtel
 REM Date: 06/08/2016
+REM Description: Add a user to a specific App Server Instance
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters:
 REM AppSrvxx

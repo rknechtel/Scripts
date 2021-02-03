@@ -5,8 +5,11 @@ REM Script: UpdateWindowsService.bat
 REM Author: Richard Knechtel
 REM Date: 04/03/2019
 REM Description: This script will Update the Wildfly AppSrv Instance
-REm               Account that runs it.
-REM 
+REM               Account that runs it.
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM   Must be run as Administrator!!
 REM 
 REM ************************************************************************

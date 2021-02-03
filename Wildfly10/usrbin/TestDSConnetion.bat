@@ -6,7 +6,9 @@ REM Script Name: TestDSConnetion.bat
 REM Description: Test a Non-XA Datasource connetion.
 REM Author: Richard Knechtel
 REM Date: 04/11/2016
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters: AppSrvxx
 REM             Datasource

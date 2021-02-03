@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 12/15/2020
 REM Description: This script will run the Coverity Security Report
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM ************************************************************************
 
 echo.

@@ -11,6 +11,8 @@ REM Description: This script will create the Windows shares for the
 REM ApplicationConfigurations and log directories for a Middleware/Wildfly 
 REM server instance
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Note: This script MUST be run as ADMINISTRATOR!
 REM

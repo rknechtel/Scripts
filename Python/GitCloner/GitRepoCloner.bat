@@ -8,6 +8,9 @@ REM Date: 04/16/2016
 REM Description: This script will allow you to clone or update (pull)
 REM               Git Repos
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Example Call:
 REM GitRepoCloner.bat clone "C:\Scripts\Python\SearchGit\sqlitedb\GitRepos.s3db" "D:\GitClonedRepos"
 REM

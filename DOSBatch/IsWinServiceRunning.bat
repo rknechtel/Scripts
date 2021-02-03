@@ -8,6 +8,10 @@ REM Script: IsWinServiceRunning.bat
 REM Author: Richard Knechtel
 REM Date: 01/05/2016
 REM Description: This will find the Process for the Service if it is running
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameter: Service Name
 REM *********************************************************************
 

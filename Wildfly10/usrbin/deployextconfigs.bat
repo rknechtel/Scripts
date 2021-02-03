@@ -6,7 +6,10 @@ REM Script: deployextconfigs.bat
 REM Author: Richard Knechtel
 REM Date: 08/21/2015
 REM Description: This script will deploy External Configuration Files
-REM 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       1) Need to have and AppSrv instance Alias configured in:
 REM          %JBOSS_HOME%\bin\jboss-cli.xml

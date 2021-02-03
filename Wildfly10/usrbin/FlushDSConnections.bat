@@ -6,7 +6,9 @@ REM Script Name: FlushDSConnections.bat
 REM Description: Flush all connections in a Non-XA Datasource.
 REM Author: Richard Knechtel
 REM Date: 04/12/2016
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters: AppSrvxx
 REM             Datasource

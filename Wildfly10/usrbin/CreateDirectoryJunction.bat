@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 05/18/2017
 REM Description: This will create the Wildfly Directory Junction
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
 REM

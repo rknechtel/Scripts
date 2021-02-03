@@ -7,7 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 12/08/2015
 REM Description: This script will allow you to stop/start/restart a particular AppSrv 
 REM              instance.
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters:
 REM            Command (Example: stop/start/restart)

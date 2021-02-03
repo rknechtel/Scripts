@@ -4,6 +4,9 @@ REM Author: Richard Knechtel
 REM Date: 10/18/2018
 REM Description: This function will allow you to check if run as admin
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Example Usage:
 REM
 REM Set default Error stuff

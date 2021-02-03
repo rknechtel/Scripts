@@ -7,6 +7,9 @@ REM Date: 10/10/2016
 REM Description: This script will allow you to 
 REM              Take/List/Delete Configuration File Snapshots.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Command (Example: take/list/delete)
 REM            AppSrv Instance Name (Example: AppSrv01)

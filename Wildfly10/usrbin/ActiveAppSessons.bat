@@ -8,6 +8,9 @@ REM Date: 07/21/2017
 REM Description: This script will allow you to see how many active 
 REM              sessions are on an Application
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Application (Example: MyApp.war)
 REM            AppSrv Instance Name (Example: AppSrv01)

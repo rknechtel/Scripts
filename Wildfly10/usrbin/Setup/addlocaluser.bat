@@ -6,9 +6,11 @@ REM Author: Richard Knechtel
 REM Date: 05/18/2017
 REM Description: This will add a local user to the system
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
-REM       Username must not exceed 20 characters!
 REM       When passing in a Comment - pass it in with double Quotes
 REM       Example: "My user Account"
 REM *********************************************************************
@@ -17,7 +19,6 @@ echo Running as user: %USERNAME%
 echo.
 echo PLEASE NOTE: 
 echo              This MUST be run as Administrator!!!
-echo              Username must not exceed 20 characters!
 echo              You must enclose any comment in double Quotes
 echo              Example: "My user Account"
 echo.
@@ -26,7 +27,6 @@ set USERNAME=%1
 set PASSWORD=%2
 set COMMENT=%3
 
-REM Check if we got the parameter
 REM Check if we got ALL parameters
 if "!USERNAME!"=="" goto usage
 if "!PASSWORD!"=="" goto usage
@@ -38,17 +38,13 @@ if "!USERNAME!"=="" if "!PASSWORD!"=="" (
 
 if NOT "!COMMENT!"=="" (
   echo Adding user %USERNAME% with comment %COMMENT%
-  net user %USERNAME% %PASSWORD% /add /fullname:"%USERNAME%" /comment:%COMMENT% /passwordchg:no
+  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%" /comment:%COMMENT%
 ) else (
   echo Adding user %USERNAME%
-  net user %USERNAME% %PASSWORD% /add /fullname:"%USERNAME%" /passwordchg:no /Y
+  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%"
 )
 
-REM Set Account never expires
 Net user %USERNAME% /Expires:Never
-
-REM Set Password Never Expires
-WMIC USERACCOUNT WHERE "Name='%USERNAME%'" SET PasswordExpires=FALSE
 
 
 REM Lets get out of here!
@@ -58,7 +54,7 @@ goto getoutofhere
 :usage
 set ERRORNUMBER=1
 echo [USAGE]: addlocaluser.bat arg1 arg2 arg3
-echo arg1 = Username for local account (Example: user1) (Note: Username must not exceed 20 characters!)
+echo arg1 = Username for local account (Example: user1)
 echo arg2 = Password for local account (Example: mysecretpassword)
 echo arg3 (Optional) = Comment for local account  (Example: "This is my new user")
 goto getoutofhere

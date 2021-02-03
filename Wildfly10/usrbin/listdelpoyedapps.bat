@@ -5,7 +5,9 @@ REM Script Name: listdelpoyedapps.bat
 REM Description: List deployed applications the server instance
 REM Author: Richard Knechtel
 REM Date: 03/04/2016
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters: AppSrvxx
 REM

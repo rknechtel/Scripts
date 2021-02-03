@@ -2,9 +2,12 @@
 @echo off
 REM ************************************************************************
 REM Script Name: jconsolewf.bat
-REM Description: Runs the jconsole GUI for Wildfly
 REM Author: Richard Knechtel
 REM Date: 01/19/2018
+REM Description: Runs the jconsole GUI for Wildfly
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Or use the jconsole.bat in:
 REM %JBOSS_HOME%\bin\jconsole.bat

@@ -8,6 +8,9 @@ REM Date: 04/03/2019
 REM Description: This script will Update the Windows Service, 
 REM              Service Account that runs it.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Note: Requires NSSM
 REM https://nssm.cc/
 REM

@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 05/18/2017
 REM Description: This will add a local user to the system
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
 REM       When passing in a Comment - pass it in with double Quotes

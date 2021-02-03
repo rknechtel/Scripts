@@ -3,10 +3,12 @@
 setlocal EnableDelayedExpansion
 REM ************************************************************************
 REM Script Name: TestXADSConnetion.bat
-REM Description: Test a XA Datasource connetion.
 REM Author: Richard Knechtel
 REM Date: 04/19/2016
-REM License: Copyleft
+REM Description: Test a XA Datasource connetion.
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters: AppSrvxx
 REM             XA Datasource

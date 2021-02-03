@@ -4,10 +4,13 @@
 setlocal enableDelayedExpansion
 REM *******************************************************************
 REM Script Name: UpdateText.bat
-REM Description: This will update All occurances of text in a .json file
 REM Author: Richard Knechtel 
 REM Date: 09/09/2020
-REM  
+REM Description: This will update All occurances of text in a .json file
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Full File Path (Example: D:\Work\MyFileToUpdate.txt)
 REM            Text To be Updated (Example: MyTextToUpdate)

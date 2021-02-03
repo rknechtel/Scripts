@@ -6,8 +6,10 @@ REM Script: countjmsmsg.bat
 REM Author: Richard Knechtel
 REM Date: 04/22/2015
 REM Description: This script will count the messages in a JMS Queue
-REM License: Copyleft
-REM 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       1) Need to have and AppSrv instance Alias configured in:
 REM          %JBOSS_HOME%\bin\jboss-cli.xml

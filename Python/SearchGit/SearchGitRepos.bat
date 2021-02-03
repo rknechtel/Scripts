@@ -7,6 +7,9 @@ REM Date: 04/16/2016
 REM Description: This script will allow you to Search across multiple
 REM               Git Repos
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Example Call:
 REM SearchGitRepos.bat MySearchString
 REM

@@ -2,10 +2,13 @@
 @echo off
 REM ************************************************************************
 REM Script Name: ReloadAppConfig.bat
-REM Description: Reload and App Servers configuration file 
-REM              without restarting.
 REM Author: Richard Knechtel
 REM Date: 10/10/2016
+REM Description: Reload and App Servers configuration file 
+REM              without restarting.
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters: AppSrvxx
 REM

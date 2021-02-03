@@ -8,6 +8,9 @@ REM Date: 06/26/2017
 REM Description: This script will allow you to 
 REM              stop/start the Wildfly/Apache Windows Service(s)
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Command (Example: stop/start)
 REM            Number of AppSrv instances to stop/start (Example: 5)

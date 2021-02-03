@@ -1,8 +1,6 @@
 
 @echo off
-
 setlocal EnableDelayedExpansion
-
 REM *********************************************************************
 REM Script: VerifyWindowsUpdates.bat
 REM Author: Richard Knechtel
@@ -10,6 +8,10 @@ REM Date: 01/05/2016
 REM Description: This will verify if windows updates were applied for a 
 REM              specific server for a date 
 REM              in M/DD/YYYY and MM/DD/YYYY format (Respectively)
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters: Server Name, Installed on Date
 REM 
 REM *********************************************************************

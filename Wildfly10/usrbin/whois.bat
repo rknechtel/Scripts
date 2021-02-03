@@ -7,6 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 02/09/2018
 REM Description: This will show who someone is by their Network ID
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM *********************************************************************
 
 set NETWORKID=%1

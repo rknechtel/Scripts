@@ -9,6 +9,9 @@ REM Description: This script will allow you to
 REM              stop/start (undeploy/deploy)
 REM              and application.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Command (Example: stop/start)
 REM            Application (Example: MyApp.war)

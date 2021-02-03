@@ -8,6 +8,8 @@ REM Date: 05/08/2017
 REM Description: This script will Setup all Environment Variables for a
 REM              Middleware/Wildfly server
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Note: This script MUST be run as ADMINISTRATOR!
 REM

@@ -3,9 +3,12 @@
 setlocal EnableDelayedExpansion
 REM ************************************************************************
 REM Script Name: deletefiles.bat
-REM Description: delete files older than a specific number of days.
 REM Author: Richard Knechtel
 REM Date: 06/08/2016
+REM Description: delete files older than a specific number of days.
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Parameters:
 REM Number of days older than to delete (Example 30)

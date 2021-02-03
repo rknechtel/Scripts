@@ -6,6 +6,10 @@ REM Script: unpackjdk64.bat
 REM Author: Richard Knechtel
 REM Date: 01/05/2016
 REM Description: This will extract Java JDK from a Java JDK EXe installer
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameter: Java JDK Installer exe file
 REM
 REM tools.zip located at:

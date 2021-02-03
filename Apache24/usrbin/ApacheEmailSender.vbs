@@ -4,6 +4,9 @@
 ' --------------------------------------------------------------
 ' Richard Knechtel 04/03/2018 - Created
 ' --------------------------------------------------------------
+, LICENSE: 
+, This script is in the public domain, free from copyrights or restrictions.
+' --------------------------------------------------------------
 
 ' Check for missing arguments.
 Set args = WScript.Arguments

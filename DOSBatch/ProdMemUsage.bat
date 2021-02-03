@@ -7,6 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 01/27/2016
 REM Description: This script will get the Wildfly Instance memory usage
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM   Must be run as Administrator!!
 REM

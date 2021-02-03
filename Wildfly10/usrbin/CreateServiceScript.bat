@@ -2,12 +2,14 @@
 @echo off
 setlocal enableDelayedExpansion
 REM ********************************************************************************
-REM Script Name: CreateServiceScript.bat 
+REM Script Name: CreateServiceScript.bat
+REM Author: Richard Knechtel
+REM Date: 02/03/2016
 REM Description: This will create a new Wildfly App Server Windows Service Script 
-REM Author: Richard Knechtel 
-REM Date: 02/03/2016 
-REM License: Copyleft
-REM 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            AppSrv number
 REM

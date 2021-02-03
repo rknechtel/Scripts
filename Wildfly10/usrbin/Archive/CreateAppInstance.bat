@@ -3,11 +3,13 @@
 setlocal enableDelayedExpansion
 REM *******************************************************************
 REM Script Name: CreateAppInstance.bat
-REM Description: This will create a new Wildfly App Server Instance 
 REM Author: Richard Knechtel 
 REM Date: 12/02/2015
-REM License: Copyleft
-REM  
+REM Description: This will create a new Wildfly App Server Instance 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Parameters:
 REM            Next AppSrv number
 REM            Host Name To Change

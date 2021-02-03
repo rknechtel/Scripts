@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 09/28/2017
 REM Description: This script will Convert and SVN project into a GIT one. 
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Note: See the comments in ConvertSVN2Git.ps1
 REM
 REM ************************************************************************

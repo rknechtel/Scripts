@@ -7,7 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 04/09/2017
 REM Description: This script will allow you to:
 REM              Shutdown, Reboot, Hibernate or Logoff your system.
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM 
 REM Notes:
 REM ************************************************************************

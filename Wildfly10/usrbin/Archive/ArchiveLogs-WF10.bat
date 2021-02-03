@@ -7,7 +7,10 @@ REM Author: Richard Knechtel
 REM Date: 01/27/2016
 REM Description: This script will allow you to
 REM              Archive Wildfly Log files 
-REm              and optionally purge old archives (by number of days)
+REM              and optionally purge old archives (by number of days)
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Notes:
 REM   Must be run as Administrator!!

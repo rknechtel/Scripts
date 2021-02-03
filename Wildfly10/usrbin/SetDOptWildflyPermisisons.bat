@@ -6,6 +6,8 @@ REM Author: Richard Knechtel
 REM Date: 07/08/2020
 REM Description: This will call the SetDOptWildflyPermisisons.ps1
 REM              PowerShell script.
+REM\REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Notes:
 REM       This MUST be run as Administrator!!!

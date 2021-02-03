@@ -9,6 +9,9 @@ REM Date: 11/20/2019
 REM Description: This script will run a Coverity scan on the Java project
 REM              directory this script is run from.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Make sure On Coverity Server Share is setup:
 REM New-SmbShare –Name Coverity –Path "D:\Program Files\Coverity\"
 REM

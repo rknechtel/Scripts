@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 05/18/2017
 REM Description: This will wait for some task to complete
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM *********************************************************************
 
 echo Running as user: %USERNAME%

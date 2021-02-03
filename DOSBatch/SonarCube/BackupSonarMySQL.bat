@@ -8,6 +8,9 @@ REM Date: 02/13/2019
 REM Description: This script will allow you to backup the SonarCube
 REM              MySQL Database
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM   Must be run as Administrator!!
 REM

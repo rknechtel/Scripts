@@ -7,6 +7,9 @@ REM Date: 09/10/2017
 REM Description: This will call the SetAzureServiceAccountPermisisons.ps1
 REM              PowerShell script.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
 REM       When passing in a service Account - pass it in with double Quotes

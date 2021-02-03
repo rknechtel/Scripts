@@ -7,6 +7,9 @@ REM Author: Richard Knechtel
 REM Date: 07/01/2019
 REM Description: This script verify if environment Variables were set.
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM ************************************************************************
 
 echo.

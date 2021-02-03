@@ -7,6 +7,9 @@ REM Date: 01/27/2016
 REM Description: This script will check if you have Administration 
 REM              privliedges
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM Explanation
 REM 

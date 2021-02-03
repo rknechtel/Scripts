@@ -1,10 +1,13 @@
 @echo off
-
+setlocal EnableDelayedExpansion
 REM *********************************************************************
 REM Script: addlocaluser.bat
 REM Author: Richard Knechtel
 REM Date: 05/18/2017
 REM Description: This will add a local user to the system
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
@@ -24,7 +27,6 @@ set USERNAME=%1
 set PASSWORD=%2
 set COMMENT=%3
 
-REM Check if we got the parameter
 REM Check if we got ALL parameters
 if "!USERNAME!"=="" goto usage
 if "!PASSWORD!"=="" goto usage
@@ -36,16 +38,13 @@ if "!USERNAME!"=="" if "!PASSWORD!"=="" (
 
 if NOT "!COMMENT!"=="" (
   echo Adding user %USERNAME% with comment %COMMENT%
-  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%" /comment:%COMMENT% /passwordchg:no
+  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%" /comment:%COMMENT%
 ) else (
   echo Adding user %USERNAME%
-  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%"  /passwordchg:no
+  Net user /add %USERNAME% %PASSWORD% /fullname:"%USERNAME%"
 )
 
-REM Set Account never expires
 Net user %USERNAME% /Expires:Never
-REM Set Password Never Expires
-WMIC USERACCOUNT WHERE "Name='%USERNAME%'" SET PasswordExpires=FALSE
 
 
 REM Lets get out of here!

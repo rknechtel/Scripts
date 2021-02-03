@@ -9,6 +9,9 @@ REM Author: Richard Knechtel
 REM Date: 10/04/2018
 REM Description: This script will batch convert files from EBCIDIC to ASCII
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Example Call: 
 REM ConvertE2A.bat D:\Scripts\ConvertEBCDIC2ASCII\FilesToConvert D:\Scripts\ConvertEBCDIC2ASCII\FilesConverted
 REM 

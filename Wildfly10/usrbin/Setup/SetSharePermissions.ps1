@@ -43,6 +43,9 @@
   Creation Date:  10/02/2018
   Purpose/Change: Initial script development
 
+.LICENSE
+ This script is in the public domain, free from copyrights or restrictions.
+
 .EXAMPLE
    From Command line:
    %SCRIPTPATH%\SetSharePermissions.ps1 -ServerName "wildflydev" -AppSrvNumber "01" -WFVersion "10"

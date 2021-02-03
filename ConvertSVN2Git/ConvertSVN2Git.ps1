@@ -23,7 +23,10 @@
   Author:         Richard Knechtel
   Creation Date:  08/27/2019
   Purpose/Change: Initial script development
-  
+
+ .LICENSE
+ This script is in the public domain, free from copyrights or restrictions.
+
 .EXAMPLE
   .\ConvertSVN2Git.ps1 -SvnPath https://svn.mydomain.com.com/svn/MyRepo/MyProject/ -TargetPath C:\Temp\MyGitProject -AuthorsFile C:\work\gitconvert\authors.txt
  

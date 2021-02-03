@@ -4,6 +4,9 @@
  Date: 11/09/2017
  Description: This script will Archive Log files
  
+ .LICENSE
+ This script is in the public domain, free from copyrights or restrictions.
+ 
  Notes:
    Args format from a DOS Batch file:
    PowerShell -ExecutionPolicy Bypass -File %SCRIPTPATH%\ArchiveLogs.ps1 AppSrv01 11-10-2017-AppSrv01-Logs.zip

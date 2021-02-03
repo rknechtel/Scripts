@@ -48,6 +48,9 @@
     WriteData
     WriteExtendedAttributes
 
+.LICENSE
+ This script is in the public domain, free from copyrights or restrictions.
+
 .EXAMPLE
    For Local Server Service Account:
   .\SetDOptWildflyPermisisons.ps1

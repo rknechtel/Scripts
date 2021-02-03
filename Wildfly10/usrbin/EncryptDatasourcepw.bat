@@ -6,7 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 09/08/2015
 REM Description: This script will encrypt a plain text Password for 
 REM              use in DataSources
-REM License: Copyleft
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM ************************************************************************
 

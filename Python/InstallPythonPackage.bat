@@ -6,6 +6,9 @@ REM Author: Richard Knechtel
 REM Date: 02/27/2020
 REM Description: This will install new python packages
 REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM *********************************************************************
 
 echo Running as user: %USERNAME%

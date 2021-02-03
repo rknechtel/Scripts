@@ -7,7 +7,10 @@ REM Author: Richard Knechtel
 REM Date: 04/05/2015
 REM Description: This script will let you create a Coverity Project 
 REM              and Stream.
-REM 
+REM
+REM LICENSE: 
+REM This script is in the public domain, free from copyrights or restrictions.
+REM
 REM Notes:
 REM   1) User running this requires the following roles in Coverity:
 REM      Project Admin, Stream Admin
