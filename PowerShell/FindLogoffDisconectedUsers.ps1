@@ -1,13 +1,13 @@
 
 <#
-  .SYNOPSIS
+.SYNOPSIS
   Force log off's users who are disconnected on a server.
   
 .DESCRIPTION
   Force log off's users who are disconnected on a server.
   
-  .PARAMETER ServerName
-    The Server Name of the server to force log off disconnected Users.
+.PARAMETER ServerName
+  The Server Name of the server to force log off disconnected Users.
 
 .INPUTS
   None
@@ -31,7 +31,7 @@
 
   
 .EXAMPLE
-  .\FindLogoffDisconectedUsers.ps1 MC21PWIN999
+  .\FindLogoffDisconectedUsers.ps1 MYSERVERNAME
 #>
 
 #---------------------------------------------------------[Script Parameters]------------------------------------------------------
