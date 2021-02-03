@@ -13,8 +13,7 @@ REM This script is in the public domain, free from copyrights or restrictions.
 REM
 REM Notes:
 REM       This MUST be run as Administrator!!!
-REM       When passing in a Comment - pass it in with double Quotes
-REM       Example: "My user Account"
+REM
 REM *********************************************************************
 
 echo Running as user: %USERNAME%
