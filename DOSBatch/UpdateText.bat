@@ -1,16 +1,12 @@
 
-
 @echo off
 setlocal enableDelayedExpansion
 REM *******************************************************************
 REM Script Name: UpdateText.bat
+REM Description: This will update All occurances of text in a file
 REM Author: Richard Knechtel 
 REM Date: 09/09/2020
-REM Description: This will update All occurances of text in a .json file
-REM
-REM LICENSE: 
-REM This script is in the public domain, free from copyrights or restrictions.
-REM
+REM  
 REM Parameters:
 REM            Full File Path (Example: D:\Work\MyFileToUpdate.txt)
 REM            Text To be Updated (Example: MyTextToUpdate)
@@ -46,6 +42,8 @@ if "!FILEPATH!"=="" if "!TEXTTOFIND!"=="" if "!TEXTTOREPLACE!"=="" (
 
 REM Replace all occurences of Text
 for %%f in (%FILEPATH%\*.json) do (
+  REM set FILETOUPDATE=%%f
+  echo "fullname: %%f"
   echo searching and replacing all occurences of %TEXTTOFIND% with %TEXTTOREPLACE% in %%f
   echo powershell -Command "(gc %%f) -replace '%TEXTTOFIND%', '%TEXTTOREPLACE%' | Out-File %%f"
   powershell -Command "(gc %%f) -replace '%TEXTTOFIND%', '%TEXTTOREPLACE%' | Out-File %%f"
@@ -60,7 +58,7 @@ goto getoutofhere
 :usage
 set ERRORNUMBER=1
 echo [USAGE]: UpdateText.bat arg1 arg2 arg3
-echo arg1 = Full File Path (D:\Work\FileToUpdate.json)
+echo arg1 = Full File Path (D:\Work\FileToUpdate.txt)
 echo arg2 = Text To Be Replaced (MyTextToChange)
 echo arg3 = Replacement Text (ReplacedText)
 
