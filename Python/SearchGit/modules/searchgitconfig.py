@@ -29,11 +29,12 @@ for module in _modules:
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 
 # Get environment variables:
-global BASEDIR
 
 # Parameters to Script:
 global ThisScript
 global SearchTerm
+global SearchPath
+global SearchGitResults
 
 # Logging:
 global LogPath
@@ -53,8 +54,9 @@ HasError = False
 # Description:  Shows the Usage if no parameters # Parameters: None 
 # 
 def ShowUsage():
-  print("[USAGE]: SearchGitRepos.py arg")
-  print("arg1 = Term To Search For (Example: Knechtel)")
+  print("[USAGE]: SearchGitRepos.py arg1 arg2")
+  print("arg1 = Term To Search For (Example: MySearchTerm)")
+  print("arg1 = Search Path (Example: D;\Temp\GitRepos)")
 
   return
 
