@@ -3,6 +3,7 @@
 # Author: Richard Knechtel
 # Date: 01/17/2018
 # Description: This is a module of generic functions
+# Python Version: 3.8.x
 #
 #
 # LICENSE: 

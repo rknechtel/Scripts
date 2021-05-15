@@ -3,7 +3,8 @@
 # Author: Your Name
 # Date: Create Date (MM/DD/YYYY)
 # Description: This script ......
-# 
+# Python Version: 3.8.x
+#
 # LICENSE: 
 # This script is in the public domain, free from copyrights or restrictions.
 #
@@ -14,11 +15,11 @@
 #     1 = Error
 #
 # EXAMPLES:
-#   Args format from a DOS Batch file (using either python):
+#   Args format from a DOS Batch file (using python):
 #   call python Drive:\Path\MyScript.py Param1 Param2
 #
-#   Args format from a Shell Script (using either python):
-#   python /Path/MyScript.py Param1 Param2
+#   Args format from a Shell Script (using python3):
+#   python3 /Path/MyScript.py Param1 Param2
 #
 #************************************************************************
 
@@ -39,6 +40,7 @@ for module in _modules:
 
 	
 # Custom Modules:
+from modules import MyScriptconfig as config
 from modules import genericfunctions as genfunc
 
 
@@ -66,6 +68,13 @@ global Param2
 global LogPath
 global LogFile
 
+global MyScriptLogger
+
+# For Info and up logging
+config.LogLevel = logging.INFO
+# For Debug and up Logging:
+#config.LogLevel = logging.DEBUG
+
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 
 #Script Version
@@ -80,8 +89,8 @@ ScriptVersion = '1.0'
 #
 def InitScriptLogging():
   # Initialize the default logging system:
-  LogPath = "C:\Temp\Log"
-  LogFile = "MyScript.log" 
+  config.LogPath = "C:\Temp\Log"
+  config.LogFile = "MyScript.log" 
   #print("Log File Name = " + os.path.join(LogPath, LogFile))
   
   # Check if Log directory exists, if it doens't create it
@@ -94,12 +103,11 @@ def InitScriptLogging():
     else:
       print("Successfully created the directory %s" % config.LogPath) 
   
-  # For Debug and up Logging:
-  #ScriptLogger = genfunc.CreateLogger(__name__, os.path.join(LogPath, LogFile),logging.DEBUG)
-  # For Info and up logging
-  ScriptLogger = genfunc.CreateLogger(__name__, os.path.join(LogPath, LogFile),logging.INFO)
 
-  return ScriptLogger
+  # Create our Logger
+  MyScriptLogger = genfunc.CreateLogger(__name__, os.path.join(config.LogPath, config.LogFile),config.LogLevel)
+
+  return MyScriptLogger
   
 # ###################################################################################
 # Function: ProcessParams
@@ -110,7 +118,7 @@ def InitScriptLogging():
 def ProcessParams(argv):
   # Set our Variables:
 
-  # Check the total number of args passed - make sure we get 5 (4 + the script name that is passed by default).
+  # Check the total number of args passed - make sure we get 3 (2 + the script name that is passed by default).
   if(len(sys.argv) == 3):
     genfunc.ShowParams()
     ThisScript = sys.argv[0]
@@ -155,21 +163,35 @@ if __name__ == '__main__':
   
   try:
 	# Initialize Logging:
-    ScriptLogger = InitScriptLogging()
+    MyScriptLogger = InitScriptLogging()
 
     # Proccess Parameters
     ProcessParams(sys.argv)
 
 	# Do Something
     print("Doing Something")
+    MyScriptLogger.info("Doing Something")
+
 
   except Exception as e:
-    print("Exception =", e)
-    print("Exception Information= ", sys.exc_type, sys.exc_value)
+    MyScriptLogger.info("MyScript script Ended at " + genfunc.GetCurrentDateTime() + ".")
+    MyScriptLogger.error("Execution failed.")
+    MyScriptLogger.error("Exception Information = " + traceback.format_exc())
+    MyScriptLogger.error("")
+    MyScriptLogger.error("MyScript.py completed unsuccessfully at " + genfunc.GetCurrentDateTime() + ".")
+    config.HasError = True
     sys.exit(1)
 
 
-  # All Went well - exiting!
-  print("MyScript completed successfully!")
-  sys.exit(0)
+  if not config.HasError:
+    # All Went well - exiting!
+    End_Time = time.time()
+    MyScriptLogger.info("MyScript script Ended at " + genfunc.GetCurrentDateTime() + ".")
+    MyScriptLogger.info("")
+    MyScriptLogger.info("MyScript.py completed successfully at " + genfunc.GetCurrentDateTime() + ".")
+    MyScriptLogger.info("")
+    MyScriptLogger.info("========================================================")
+    MyScriptLogger.info("")
+    config.HasError = False
+    sys.exit(0)
 
