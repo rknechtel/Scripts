@@ -10,7 +10,7 @@
 # This script is in the public domain, free from copyrights or restrictions.
 #
 # ###################################################################################
-from _overlapped import NULL
+#from _overlapped import NULL
 
 
 # ---------------------------------------------------------[Imports]------------------------------------------------------
@@ -20,9 +20,9 @@ _modules = [
             'logging',
             'logging.handlers',            
             'os',
-			       'psutil',
+            'psutil',
             'shutil',
-			      'subprocess',
+            'subprocess',
             'sys',
             'tempfile',
             'time',
@@ -40,9 +40,90 @@ global GenFuncLogger
 
 # ---------------------------------------------------------[Functions]----------------------------------------------------
 
+# ###################################################################################
+# Function: InitScriptConsoleLogging
+# Description:  Initialize the Scripts Console logging
+# Parameters: None
+#
+# # Exmaple Usage:
+# MyLogger = genfunc.InitScriptConsoleLogging(__name__, config.LogLevel)
+#
+def InitScriptConsoleLogging(logger_name,log_level):
+  # Initialize the default logging system:
+
+  # Create our Logger
+  MyScriptLogger = CreateConsoleLogger(logger_name, log_level)
+
+  return MyScriptLogger
 
 # ###################################################################################
-# Function: CreateLogger
+# Function: CreateConsoleLogger
+# Description: This will log to std.out (console)
+# Parameters: 
+#             LoggerName - Name of Logger to use
+#             Loglevel - Loging level to use (see below)
+#
+# mode/filemodes:
+# a = append 
+# w = write
+#
+# Logging Levels:
+# logging.CRITICAL (50) - Usage: logging.critical(<message>)
+# logging.ERROR (40)    - Usage: logging.error(<message>)
+# logging.WARNING (30)  - Usage: logging.warning(<message>)
+# logging.INFO (20)     - Usage: logging.info(<message>)
+# logging.DEBUG (10)    - Usage: logging.debug(<message>)
+# logging.NOTSET (0)
+#
+# To Check if a logger is enable for a specific logging level
+# Note: Can be expensive in deeply nested loggers
+# if logger.isEnabledFor(logging.DEBUG):
+#
+def CreateConsoleLogger(LoggerName, Loglevel):
+
+  # Get logger for passed in LoggerName
+  MyLogger = logging.getLogger(LoggerName)
+  MyLogger.setLevel(Loglevel)
+    
+  # Create the log message handler (to console)
+  LogFileHandler = logging.StreamHandler(sys.stdout)
+    
+  # Set the Logging Format
+  formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+  LogFileHandler.setFormatter(formatter)
+  LogFileHandler.setLevel(Loglevel)
+
+  # Append the Console StreamHandler:
+  MyLogger.addHandler(LogFileHandler)
+  
+  return MyLogger
+
+# ###################################################################################
+# Function: InitScriptFileLogging
+# Description:  Initialize the Scripts File Logging
+# Parameters: None
+#
+def InitScriptFileLogging(logger_name, log_path, file_name, log_level):
+  # Initialize the default logging system:
+  
+  # Check if Log directory exists, if it doens't create it
+  DirExists = os.path.isdir(log_path)
+  if DirExists==False:
+    try:
+      os.mkdir(log_path)
+    except OSError:
+      print("Creation of the directory %s failed" % log_path)
+    else:
+      print("Successfully created the directory %s" % log_path) 
+  
+
+  # Create our Logger
+  MyScriptLogger = CreateFileLogger(__name__, os.path.join(log_path, file_name), log_level)
+
+  return MyScriptLogger
+
+# ###################################################################################
+# Function: CreateFileLogger
 # Description:  Initialize/Create logger
 # Parameters: 
 #             LoggerName - Name of Logger to use
@@ -54,22 +135,22 @@ global GenFuncLogger
 # w = write
 #
 # Logging Levels:
-# logging.CRITICAL  - Usage: logging.critical(<message>)
-# logging.ERROR     - Usage: logging.error(<message>)
-# logging.WARNING   - Usage: logging.warning(<message>)
-# logging.INFO      - Usage: logging.info(<message>)
-# logging.DEBUG     - Usage: logging.debug(<message>)
-# logging.NOTSET
+# logging.CRITICAL (50) - Usage: logging.critical(<message>)
+# logging.ERROR (40)    - Usage: logging.error(<message>)
+# logging.WARNING (30)  - Usage: logging.warning(<message>)
+# logging.INFO (20)     - Usage: logging.info(<message>)
+# logging.DEBUG (10)    - Usage: logging.debug(<message>)
+# logging.NOTSET (0)
 #
 # To Check if a logger is enable for a specific logging level
 # Note: Can be expensive in deeply nested loggers
 # if logger.isEnabledFor(logging.DEBUG):
 #
-def CreateLogger(LoggerName, FileName, Loglevel):
+def CreateFileLogger(LoggerName, FileName, Loglevel):
 
   # Get logger for passed in LoggerName
-  DeployLogger = logging.getLogger(LoggerName)
-  DeployLogger.setLevel(Loglevel)
+  MyLogger = logging.getLogger(LoggerName)
+  MyLogger.setLevel(Loglevel)
    
     
   # Create the log message handler
@@ -81,9 +162,9 @@ def CreateLogger(LoggerName, FileName, Loglevel):
   LogFileHandler.setFormatter(formatter)
 
   # Append the RotatingFileHandler:
-  DeployLogger.addHandler(LogFileHandler)
+  MyLogger.addHandler(LogFileHandler)
   
-  return DeployLogger
+  return MyLogger
 
 
 
@@ -337,6 +418,29 @@ def PrintStatInfo(StatPath):
 
   return
   
+# ###################################################################################
+# Function: cmp
+# Description:  
+#    Replacement for built-in function cmp that was removed in Python 3
+#    Compare the two objects x and y and return an integer according to
+#    the outcome. 
+#    The return value is: 
+#      negative if x < y 
+#      positive if x > y
+#      zero if x == y
+# Parameters: 
+#  x = First item to compare
+#  y = Second item to compare
+#
+def cmp(x, y):
+  print('cmp(x=' + x + ' y=' +y)
+  if x < y:
+    return -1
+  elif x > y:
+    return 1
+  else:
+    return 0
+
 
 # This is a Function template:
 # ###################################################################################

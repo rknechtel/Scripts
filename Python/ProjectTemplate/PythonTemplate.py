@@ -26,6 +26,7 @@
 #---------------------------------------------------------[Imports]------------------------------------------------------
 
 _modules = [
+            'getpass',
             'os',
             'sys',
             'errno',
@@ -40,7 +41,7 @@ for module in _modules:
 
 	
 # Custom Modules:
-from modules import MyScriptconfig as config
+from config import MyScriptconfig as config
 from modules import genericfunctions as genfunc
 
 
@@ -57,7 +58,8 @@ Param2 = sys.argv[1]
 
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 
-Username = os.environ["USERNAME"]
+# Platform agnostic way to get User
+Username = getpass.getuser()
 
 # Parameters to Script:
 global ThisScript
@@ -70,6 +72,10 @@ global LogFile
 
 global MyScriptLogger
 
+# Logging (File):
+ config.LogPath = "C:\Temp\Log"
+ config.LogFile = "MyScript.log"
+  
 # For Info and up logging
 config.LogLevel = logging.INFO
 # For Debug and up Logging:
@@ -78,36 +84,9 @@ config.LogLevel = logging.INFO
 #----------------------------------------------------------[Declarations]----------------------------------------------------------
 
 #Script Version
-ScriptVersion = '1.0'
+ScriptVersion = '0.0.1'
 
 #---------------------------------------------------------[Functions]--------------------------------------------------------
-
-# ###################################################################################
-# Function: InitScriptLogging
-# Description:  Initialize the Scripts logging
-# Parameters: None
-#
-def InitScriptLogging():
-  # Initialize the default logging system:
-  config.LogPath = "C:\Temp\Log"
-  config.LogFile = "MyScript.log" 
-  #print("Log File Name = " + os.path.join(LogPath, LogFile))
-  
-  # Check if Log directory exists, if it doens't create it
-  DirExists = os.path.isdir(config.LogPath)
-  if DirExists==False:
-    try:
-      os.mkdir(config.LogPath)
-    except OSError:
-      print("Creation of the directory %s failed" % config.LogPath)
-    else:
-      print("Successfully created the directory %s" % config.LogPath) 
-  
-
-  # Create our Logger
-  MyScriptLogger = genfunc.CreateLogger(__name__, os.path.join(config.LogPath, config.LogFile),config.LogLevel)
-
-  return MyScriptLogger
   
 # ###################################################################################
 # Function: ProcessParams
@@ -145,7 +124,7 @@ def MyFuncation(Param1, Param2):
     print("Doing Something")
 
   except Exception as e:
-    print("Exception Information= ", sys.exc_type, sys.exc_value)
+    print("Exception Information= ", sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2])
 
   return
    
@@ -162,8 +141,12 @@ if __name__ == '__main__':
 
   
   try:
-	# Initialize Logging:
-    MyScriptLogger = InitScriptLogging()
+    # Note: Choose to use either File Logging or Console Logging. Console Logging is best for use in AWS.
+	# Initialize File Logging:
+    MyScriptLogger = InitScriptFileLogging(MyScript, config.LogPath, config.LogFile, config.LogLevel)
+    
+    # INitialize Console Logging:
+    MyScriptLogger = genfunc.InitScriptConsoleLogging(MyScript, config.LogLevel)
 
     # Proccess Parameters
     ProcessParams(sys.argv)
@@ -185,7 +168,6 @@ if __name__ == '__main__':
 
   if not config.HasError:
     # All Went well - exiting!
-    End_Time = time.time()
     MyScriptLogger.info("MyScript script Ended at " + genfunc.GetCurrentDateTime() + ".")
     MyScriptLogger.info("")
     MyScriptLogger.info("MyScript.py completed successfully at " + genfunc.GetCurrentDateTime() + ".")
