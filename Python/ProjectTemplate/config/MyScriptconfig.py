@@ -53,10 +53,13 @@ HasError = False
 
 # ###################################################################################
 # Function: ShowUsage
-# Description:  Shows the Usage if no parameters
-# Parameters: None
-#
 def ShowUsage():
+  """
+  Function: ShowUsage
+  Description:  Shows the Usage if no parameters
+  Parameters: None
+  Return: None
+  """
   print("[USAGE]: MyScriptconfig.py arg1 arg2")
   print("arg1 = Param1 (Example: Some Paramaeter 1)")
   print("arg2 = Param2 (Example: Some Paramaeter 2)")
@@ -69,10 +72,13 @@ def ShowUsage():
 # This is a Function template:
 # ###################################################################################
 # Function:
-# Description:
-# Parameters:
-#
 def MyFuncation(Param1, Param2):
+  """
+  Function:
+  Description:
+  Parameters:
+  Return: 
+  """
   print("In MyFuncation():")
 
   try:
@@ -80,6 +86,9 @@ def MyFuncation(Param1, Param2):
     print("Doing Something")
 
   except Exception as e:
-    print("Exception Information= ", sys.exc_type, sys.exc_value)
+    print("Exception Information: ")
+    print(sys.exc_info()[0])
+    print(sys.exc_info()[1])
+    print(sys.exc_info()[2])
 
   return
