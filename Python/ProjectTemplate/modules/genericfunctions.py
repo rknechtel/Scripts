@@ -21,6 +21,7 @@ _modules = [
             'logging.handlers',            
             'os',
             'psutil',
+            'random',
             'shutil',
             'subprocess',
             'sys',
@@ -42,15 +43,15 @@ global GenFuncLogger
 
 # ###################################################################################
 # Function: InitScriptConsoleLogging
-# Description:  Initialize the Scripts Console logging
-# Parameters: None
-#
-# # Exmaple Usage:
-# MyLogger = genfunc.InitScriptConsoleLogging(__name__, config.LogLevel)
-#
 def InitScriptConsoleLogging(logger_name,log_level):
-  # Initialize the default logging system:
-
+  """
+  Function: InitScriptConsoleLogging
+  Description:  Initialize the Scripts Console logging
+  Parameters: None
+  Returns: Console Logger
+  Exmaple Usage:
+  MyLogger = genfunc.InitScriptConsoleLogging(__name__, config.LogLevel)
+  """
   # Create our Logger
   MyScriptLogger = CreateConsoleLogger(logger_name, log_level)
 
@@ -58,29 +59,32 @@ def InitScriptConsoleLogging(logger_name,log_level):
 
 # ###################################################################################
 # Function: CreateConsoleLogger
-# Description: This will log to std.out (console)
-# Parameters: 
-#             LoggerName - Name of Logger to use
-#             Loglevel - Loging level to use (see below)
-#
-# mode/filemodes:
-# a = append 
-# w = write
-#
-# Logging Levels:
-# logging.CRITICAL (50) - Usage: logging.critical(<message>)
-# logging.ERROR (40)    - Usage: logging.error(<message>)
-# logging.WARNING (30)  - Usage: logging.warning(<message>)
-# logging.INFO (20)     - Usage: logging.info(<message>)
-# logging.DEBUG (10)    - Usage: logging.debug(<message>)
-# logging.NOTSET (0)
-#
-# To Check if a logger is enable for a specific logging level
-# Note: Can be expensive in deeply nested loggers
-# if logger.isEnabledFor(logging.DEBUG):
-#
 def CreateConsoleLogger(LoggerName, Loglevel):
 
+  """
+  Function: CreateConsoleLogger
+  Description: This will log to std.out (console)
+  Parameters: 
+              LoggerName: ame of Logger to use
+              Loglevel: Loging level to use (see below)
+  Returns: Console Logger
+
+  mode/filemodes:
+  a = append 
+  w = write
+
+  Logging Levels:
+  logging.CRITICAL (50) - Usage: logging.critical(<message>)
+  logging.ERROR (40)    - Usage: logging.error(<message>)
+  logging.WARNING (30)  - Usage: logging.warning(<message>)
+  logging.INFO (20)     - Usage: logging.info(<message>)
+  logging.DEBUG (10)    - Usage: logging.debug(<message>)
+  logging.NOTSET (0)
+  
+  To Check if a logger is enable for a specific logging level
+  Note: Can be expensive in deeply nested loggers
+  if logger.isEnabledFor(logging.DEBUG):
+  """
   # Get logger for passed in LoggerName
   MyLogger = logging.getLogger(LoggerName)
   MyLogger.setLevel(Loglevel)
@@ -100,11 +104,14 @@ def CreateConsoleLogger(LoggerName, Loglevel):
 
 # ###################################################################################
 # Function: InitScriptFileLogging
-# Description:  Initialize the Scripts File Logging
-# Parameters: None
-#
 def InitScriptFileLogging(logger_name, log_path, file_name, log_level):
-  # Initialize the default logging system:
+
+  """
+  Function: InitScriptFileLogging
+  Description:  Initialize the Scripts File Logging
+  Parameters: None
+  Returns File Logger
+  """
   
   # Check if Log directory exists, if it doens't create it
   DirExists = os.path.isdir(log_path)
@@ -124,30 +131,34 @@ def InitScriptFileLogging(logger_name, log_path, file_name, log_level):
 
 # ###################################################################################
 # Function: CreateFileLogger
-# Description:  Initialize/Create logger
-# Parameters: 
-#             LoggerName - Name of Logger to use
-#             FileName - Full Path Log File Name
-#             Loglevel - Loging level to use (see below)
-#
-# mode/filemodes:
-# a = append 
-# w = write
-#
-# Logging Levels:
-# logging.CRITICAL (50) - Usage: logging.critical(<message>)
-# logging.ERROR (40)    - Usage: logging.error(<message>)
-# logging.WARNING (30)  - Usage: logging.warning(<message>)
-# logging.INFO (20)     - Usage: logging.info(<message>)
-# logging.DEBUG (10)    - Usage: logging.debug(<message>)
-# logging.NOTSET (0)
-#
-# To Check if a logger is enable for a specific logging level
-# Note: Can be expensive in deeply nested loggers
-# if logger.isEnabledFor(logging.DEBUG):
-#
 def CreateFileLogger(LoggerName, FileName, Loglevel):
 
+  """
+  Function: CreateFileLogger
+  Description:  Initialize/Create logger
+  Parameters: 
+              LoggerName: Name of Logger to use
+              FileName: Full Path Log File Name
+              Loglevel: Loging level to use (see below)
+  Returns: File Logger
+  
+  mode/filemodes:
+  a = append 
+  w = write
+
+  Logging Levels:
+  logging.CRITICAL (50) - Usage: logging.critical(<message>)
+  logging.ERROR (40)    - Usage: logging.error(<message>)
+  logging.WARNING (30)  - Usage: logging.warning(<message>)
+  logging.INFO (20)     - Usage: logging.info(<message>)
+  logging.DEBUG (10)    - Usage: logging.debug(<message>)
+  logging.NOTSET (0)
+  
+  To Check if a logger is enable for a specific logging level
+  Note: Can be expensive in deeply nested loggers
+  if logger.isEnabledFor(logging.DEBUG):
+  """
+  
   # Get logger for passed in LoggerName
   MyLogger = logging.getLogger(LoggerName)
   MyLogger.setLevel(Loglevel)
@@ -170,10 +181,14 @@ def CreateFileLogger(LoggerName, FileName, Loglevel):
 
 # ###################################################################################
 # Function: ShowParams
-# Description:  Display Parameters passed to script
-# Parameters: None
-#
 def ShowParams():
+
+  """
+  Function: ShowParams
+  Description:  Display Parameters passed to script
+  Parameters: None
+  Returns: None
+  """
   NumArgs = len(sys.argv)
   print("")
   print("Passed Arguments:")
@@ -188,11 +203,16 @@ def ShowParams():
 
 # ###################################################################################
 # Function: GetCurrentDate
-# Description: Will return the current date and time formatted as:
-#              YYYY-MM-DD
-# Parameters: None
-#
 def GetCurrentDate():
+
+  """
+  Function: GetCurrentDate
+  Description: Will return the current date and time 
+               formatted as: YYYY-MM-DD
+  Parameters: None
+  Returns: Current Date
+  """
+  
   Current_Time = datetime.datetime.now()
 
   return Current_Time.strftime("%Y-%m-%d")
@@ -201,11 +221,15 @@ def GetCurrentDate():
 
 # ###################################################################################
 # Function: GetCurrentDateTime
-# Description: Will return the current date and time formatted as:
-#              YYYY-MM-DD HH:MM:SS
-# Parameters: None
-#
 def GetCurrentDateTime():
+  """
+  Function: GetCurrentDateTime
+  Description: Will return the current date and time 
+               formatted as: YYYY-MM-DD HH:MM:SS
+  Parameters: None
+  Returns: Current Date and Time
+  """
+  
   Current_Time = datetime.datetime.now()
 
   return Current_Time.strftime("%Y-%m-%d %H:%M:%S")
@@ -213,12 +237,16 @@ def GetCurrentDateTime():
 
 # ###################################################################################
 # Function: GetReadableDateTime
-# Description: Will return the passed Time In Seconds in readable Date/Time format
-#              Example: 10/31/2018 12:15:45
-# Parameters:
-#
 def GetReadableDateTime(TimeInSeconds):
-
+  """
+  Function: GetReadableDateTime
+  Description: Will return the passed Time In Seconds 
+               in readable Date/Time format
+               Example: 10/31/2018 12:15:45
+  Parameters: TimeInSeconds: Time in seconds
+  Return: Readable Date/Time Format
+  """
+  
   ts = time.localtime(TimeInSeconds)
   
   return time.strftime("%m/%d/%Y %H:%M:%S", ts)
@@ -226,13 +254,15 @@ def GetReadableDateTime(TimeInSeconds):
 
 # ###################################################################################
 # Function: MoveFile
-# Description: Function for moving a file  
-# Parameters: From - The full path and file name to move
-#             To - The full path and file name to move to
-#             MyLogger - The logger to use for logging (Optional)
-#
 def MoveFile(From, To, MyLogger):
-
+  """
+  Function: MoveFile
+  Description: Function for moving a file  \n
+  Parameters: From - The full path and file name to move \n
+              To - The full path and file name to move to \n
+              MyLogger - The logger to use for logging (Optional) \n
+  Return: None
+  """
   if MyLogger is None:
     GenFuncLogger = MyLogger
     GenFuncLogger.info("In MoveFile(): From Directory = " + From + " To Directory = " + To)
@@ -266,11 +296,13 @@ def MoveFile(From, To, MyLogger):
 
 # ###################################################################################
 # Function: Remove
-# Description: Will remove a directory or file
-# Parameters: Path - Path to rmeove (either a directory or file)
-#
 def Remove(Path):
-
+  """
+  Function: Remove
+  Description: Will remove a directory or file
+  Parameters: Path - Path to rmeove (either a directory or file)
+  Return: None
+  """
   # Remove the file or directory
   if os.path.isdir(path):
       try:
@@ -287,10 +319,13 @@ def Remove(Path):
 
 # ###################################################################################
 # Function: Chmod0777
-# Description: Function for setting Full Authority Permissions on a Directory or File 
-# Parameters: FileName - The full path to Directory or file
-# 
 def Chmod0777(FileName):
+  """
+  Function: Chmod0777
+  Description: Function for setting Full Authority Permissions on a Directory or File 
+  Parameters: FileName - The full path to Directory or file
+  Return: None
+  """
   try:
     os.chmod(FileName, stat.S_IRWXU) # Read, write, and execute by owner.
     os.chmod(FileName, stat.S_IRWXG) # Read, write, and execute by group.
@@ -299,53 +334,73 @@ def Chmod0777(FileName):
   except Exception as e:
     print("Exception in Chmod0777() =", e)
 
+  return
 
 # ###################################################################################
 # Function: GetTempDir()
 # Description: This will return a platform agnostic Temp directory location.
 # Parameters: None
+# Return: Temp Directory Location
 #
 def GetTempDir():
+  """
+  Function: GetTempDir()
+  Description: This will return a platform agnostic Temp directory location.
+  Parameters: None
+  Return: Temp Directory Location
+  """
   TempDir = tempfile.gettempdir()
+
   return TempDir
 
 
 # ###################################################################################
 # Function: GetTempDir()
-# Description: This will return a platform agnostic Semi-Private Temp directory 
-#              location.
-# Parameters: None
-#
 def GetSemiPrivateTempDir():
+  """
+  Function: GetTempDir()
+  Description: This will return a platform agnostic Semi-Private 
+               Temp directory location.
+  Parameters: None
+  Return: Semi-Private Temp Directory Location
+  """
   TempDir = os.path.join(GetTempDir(), '.{}'.format(hash(os.times())))
   os.makedirs(TempDir)
+
   return TempDir
  
 
 # ###################################################################################
 # Function: CleanTempDir()
-# Description:  This will clean out the platform agnostic Temp directory.
-#               (for for privacy, resources, security, whatever reason.)
-# Parameters: TempDirectory - Temp Directory to Clean out
-#
 def CleanTempDir(TempDirectory):
+  """
+  Function: CleanTempDir()
+  Description:  This will clean out the platform agnostic Temp directory.
+                (for for privacy, resources, security, whatever reason.)
+  Parameters: TempDirectory - Temp Directory to Clean out
+  Return: None
+  """
   shutil.rmtree(TempDirectory, ignore_errors=True)
+  
   return
 
 
 # ###################################################################################
 # Function: Puge
-# Description: This will purge files in a directory older than the number of days
-#              specified
-# Parameters: PurgeDirectory - Directory to purge files in
-#             NumDays - Days Older than to Purge (Example: 30)
-#
-# Possible Improvements:
-#   Add logging so you know what got deleted or what didn’t (or both)
-#   Make the function able to accept a range of dates or a list of dates to delete
-#
 def Purge(PurgeDirectory, NumDays):
 
+  """
+  Function: Puge
+  Description: This will purge files in a directory older than the number of days
+               specified
+  Parameters: PurgeDirectory: Directory to purge files in
+              NumDays: Days Older than to Purge (Example: 30)
+  Return: None
+  Possible Improvements:
+    Add logging so you know what got deleted or what didn’t (or both) \n
+    Make the function able to accept a range of dates or a list of dates to delete \n
+  """
+  
   # Removes files from the passed in path that are older than or equal
   # to the number_of_days
 
@@ -374,10 +429,13 @@ def Purge(PurgeDirectory, NumDays):
 
 # ###################################################################################
 # Function: killProcess
-# Description: Will kill a Process by it's Process ID
-# Parameters: ProcPID - Process ID
-#
 def killProcess(ProcPID):
+  """
+  Function: killProcess
+  Description: Will kill a Process by it's Process ID
+  Parameters: ProcPID - Process ID
+  Return: None
+  """
   process = psutil.Process(ProcPID)
 
   for proc in process.children(recursive=True):
@@ -390,14 +448,15 @@ def killProcess(ProcPID):
 
 # ###################################################################################
 # Function: PrintStatInfo
-# Description: Will print the statistics for a given path/file.
-# Parameters: Path/File
-#
-# Example Call from DOS:
-# python -c "from modules import genericfunctions as genfunc; genfunc.PrintStatInfo('C:\\Projects\\Middleware-E46\\Wildfly\\Scripts\\Windows\\Apache\\usrbin\\Python\\modules\\archiveconfig.py')"
-#
 def PrintStatInfo(StatPath):
-
+  """
+  Function: PrintStatInfo
+  Description: Will print the statistics for a given path/file.
+  Parameters: Path/File
+  Return: None
+  Example Call from DOS:
+  python -c "from modules import genericfunctions as genfunc; genfunc.PrintStatInfo('C:\\Projects\\Middleware-E46\\Wildfly\\Scripts\\Windows\\Apache\\usrbin\\Python\\modules\\archiveconfig.py')"
+  """
   statinfo = os.stat(StatPath)
 
   print("Statistics for: " + StatPath)
@@ -420,19 +479,22 @@ def PrintStatInfo(StatPath):
   
 # ###################################################################################
 # Function: cmp
-# Description:  
-#    Replacement for built-in function cmp that was removed in Python 3
-#    Compare the two objects x and y and return an integer according to
-#    the outcome. 
-#    The return value is: 
-#      negative if x < y 
-#      positive if x > y
-#      zero if x == y
-# Parameters: 
-#  x = First item to compare
-#  y = Second item to compare
-#
 def cmp(x, y):
+  """
+  Function: cmp
+  Description:  
+     Replacement for built-in function cmp that was removed in Python 3
+     Compare the two objects x and y and return an integer according to
+     the outcome. 
+     The return value is: 
+       negative if x < y 
+       positive if x > y
+       zero if x == y
+  Parameters: 
+   x = First item to compare
+   y = Second item to compare
+  Return: Integer
+  """
   print('cmp(x=' + x + ' y=' +y)
   if x < y:
     return -1
@@ -442,12 +504,49 @@ def cmp(x, y):
     return 0
 
 
+# ###################################################################################
+# Function: genrandom
+# Description: Generates a Random Number between 2 passed in numbers
+# Parameters: numfrom: Starting Number (int)
+#             numto: Ending Number (int)
+# Returns: Random Number between 2 passed in numbers (int)
+#
+def genrandom(numfrom, numto):
+  """
+  Function: genrandom
+  Description: Generates a Random Number between 2 passed in numbers
+  Parameters: numfrom: Starting Number (int)
+              numto: Ending Number (int)
+  Returns: Random Number between 2 passed in numbers (int)
+  """
+  if numfrom.strip().isdigit() and numto.strip().isdigit():
+    randomnumber = random.randint(numfrom, numto)
+    print('Random Number Generated: ' + randomnumber)
+  else:
+    raise ValueError('One of the numbers you gave me is not a number.')
+
+  return randomnumber
+
 # This is a Function template:
 # ###################################################################################
-# Function: 
-# Description:  
-# Parameters: 
-#
+# Function:
 def MyFuncation(Param1, Param2):
+  """
+  Function:
+  Description:
+  Parameters:
+  Return: 
+  """
+  print("In MyFuncation():")
+
+  try:
+    # Do Something
+    print("Doing Something")
+
+  except Exception as e:
+    print("Exception Information: ")
+    print(sys.exc_info()[0])
+    print(sys.exc_info()[1])
+    print(sys.exc_info()[2])
 
   return

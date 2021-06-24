@@ -51,11 +51,6 @@ print("Passed Arguments:")
 print(sys.argv)
 print("")
 
-# Set our Variables:
-Param1 = sys.argv[0]
-Param2 = sys.argv[1]
-
-
 #---------------------------------------------------------[Initialisations]--------------------------------------------------------
 
 # Platform agnostic way to get User
@@ -90,13 +85,14 @@ ScriptVersion = '0.0.1'
   
 # ###################################################################################
 # Function: ProcessParams
-# Description:  This will process any parameters to the Script
-# Parameters: Param1      - Does
-#             Param2         - Does
-#
 def ProcessParams(argv):
-  # Set our Variables:
-
+  """
+  Function: ProcessParams
+  Description:  This will process any parameters to the Script
+  Parameters: Param1: Does
+              Param2: Does
+  Return: None
+  """
   # Check the total number of args passed - make sure we get 3 (2 + the script name that is passed by default).
   if(len(sys.argv) == 3):
     genfunc.ShowParams()
@@ -113,10 +109,13 @@ def ProcessParams(argv):
 # This is a Function template:
 # ###################################################################################
 # Function:
-# Description:
-# Parameters:
-#
 def MyFuncation(Param1, Param2):
+  """
+  Function:
+  Description:
+  Parameters:
+  Return: 
+  """
   print("In MyFuncation():")
 
   try:
@@ -124,7 +123,10 @@ def MyFuncation(Param1, Param2):
     print("Doing Something")
 
   except Exception as e:
-    print("Exception Information= ", sys.exc_info()[0], sys.exc_info()[1], sys.exc_info()[2])
+    print("Exception Information: ")
+    print(sys.exc_info()[0])
+    print(sys.exc_info()[1])
+    print(sys.exc_info()[2])
 
   return
    
@@ -141,8 +143,8 @@ if __name__ == '__main__':
 
   
   try:
-    # Note: Choose to use either File Logging or Console Logging. Console Logging is best for use in AWS.
-	# Initialize File Logging:
+    # Note: Choose to use either File Logging or Console Logging.
+	  # Initialize File Logging:
     MyScriptLogger = InitScriptFileLogging(MyScript, config.LogPath, config.LogFile, config.LogLevel)
     
     # INitialize Console Logging:
@@ -151,15 +153,17 @@ if __name__ == '__main__':
     # Proccess Parameters
     ProcessParams(sys.argv)
 
-	# Do Something
-    print("Doing Something")
+	  # Do Something
     MyScriptLogger.info("Doing Something")
 
 
   except Exception as e:
     MyScriptLogger.info("MyScript script Ended at " + genfunc.GetCurrentDateTime() + ".")
     MyScriptLogger.error("Execution failed.")
-    MyScriptLogger.error("Exception Information = " + traceback.format_exc())
+    MyScriptLogger.error("Exception Information: ")
+    MyScriptLogger.error(sys.exc_info()[0])
+    MyScriptLogger.error(sys.exc_info()[1])
+    MyScriptLogger.error(sys.exc_info()[2])
     MyScriptLogger.error("")
     MyScriptLogger.error("MyScript.py completed unsuccessfully at " + genfunc.GetCurrentDateTime() + ".")
     config.HasError = True
