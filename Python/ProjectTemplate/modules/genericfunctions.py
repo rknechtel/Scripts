@@ -17,6 +17,8 @@
 
 _modules = [
             'datetime',
+            'io',
+            'json',
             'logging',
             'logging.handlers',            
             'os',
@@ -65,7 +67,7 @@ def CreateConsoleLogger(LoggerName, Loglevel):
   Function: CreateConsoleLogger
   Description: This will log to std.out (console)
   Parameters: 
-              LoggerName: ame of Logger to use
+              LoggerName: Name of Logger to use
               Loglevel: Loging level to use (see below)
   Returns: Console Logger
 
@@ -88,7 +90,13 @@ def CreateConsoleLogger(LoggerName, Loglevel):
   # Get logger for passed in LoggerName
   MyLogger = logging.getLogger(LoggerName)
   MyLogger.setLevel(Loglevel)
-    
+
+  # Disable something else from propgating their logging on top of ours (get rid of second log entries)
+  # This prevents issues like an AWS Lambda adding it's own handler to generate a secod log entry.
+  # Ref:
+  # https://gist.github.com/niranjv/fb95e716151642e8ca553b0e38dd152e
+  MyLogger.propagate = False
+  
   # Create the log message handler (to console)
   LogFileHandler = logging.StreamHandler(sys.stdout)
     
@@ -96,6 +104,10 @@ def CreateConsoleLogger(LoggerName, Loglevel):
   formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
   LogFileHandler.setFormatter(formatter)
   LogFileHandler.setLevel(Loglevel)
+
+  # Check for existing handlers - if any clear them:
+  if (MyLogger.hasHandlers()):
+    MyLogger.handlers.clear()
 
   # Append the Console StreamHandler:
   MyLogger.addHandler(LogFileHandler)
@@ -162,8 +174,13 @@ def CreateFileLogger(LoggerName, FileName, Loglevel):
   # Get logger for passed in LoggerName
   MyLogger = logging.getLogger(LoggerName)
   MyLogger.setLevel(Loglevel)
-   
-    
+
+  # Disable something else from propgating their logging on top of ours (get rid of second log entries)
+  # This prevents issues like an AWS Lambda adding it's own handler to generate a secod log entry.
+  # Ref:
+  # https://gist.github.com/niranjv/fb95e716151642e8ca553b0e38dd152e
+  MyLogger.propagate = False
+
   # Create the log message handler
   # maxBytes: 10485760 = 10 MB
   LogFileHandler = logging.handlers.RotatingFileHandler(FileName, mode='a', maxBytes=10485760, backupCount=5)
@@ -171,6 +188,10 @@ def CreateFileLogger(LoggerName, FileName, Loglevel):
   # Set the Logging Format
   formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
   LogFileHandler.setFormatter(formatter)
+
+  # Check for existing handlers - if any clear them:
+  if (MyLogger.hasHandlers()):
+    MyLogger.handlers.clear()
 
   # Append the RotatingFileHandler:
   MyLogger.addHandler(LogFileHandler)
@@ -506,10 +527,6 @@ def cmp(x, y):
 
 # ###################################################################################
 # Function: genrandom
-# Description: Generates a Random Number between 2 passed in numbers
-# Parameters: numfrom: Starting Number (int)
-#             numto: Ending Number (int)
-# Returns: Random Number between 2 passed in numbers (int)
 #
 def genrandom(numfrom, numto):
   """
@@ -526,6 +543,68 @@ def genrandom(numfrom, numto):
     raise ValueError('One of the numbers you gave me is not a number.')
 
   return randomnumber
+
+
+# ###################################################################################
+# Function: str2bool
+def String2Bool(BooleanString):
+  """
+  Function: String2Bool
+  Description: Will return a boolean value of a boolean string
+  Parameters: BooleanString
+  Return: boolean
+  """
+  
+  # Default:
+  returnbool = False
+
+  try:
+    print("Running String2Bool():")
+    returnbool = BooleanString.lower() in ("yes", "true", "t", "1")
+
+  except Exception as e:
+    print('String2Bool - We had some unforseen error!')
+    print("Exception Information: ")
+    print(sys.exc_info()[0])
+    print(sys.exc_info()[1])
+    print(sys.exc_info()[2])
+
+  return returnbool
+
+
+####################################################################################
+# Function: GetJsonFromFile
+# Description: Read JSON Data from a File 
+# Parameters: pLogger: Logger
+#             pJsonFile: JSON Full File Path 
+# Example Call:
+# GetJsonFromFile(C:\Temp\MyFile.json)
+#
+def GetJsonFromFile(pLogger, pJsonFile):
+  """
+  Function: GetJsonFromFile
+  Description: Read JSON Data from a File 
+  Parameters: pLogger: Logger
+              pJsonFile: JSON Full File Path 
+  Example Call:
+  GetJsonFromFile(C:\Temp\MyFile.json)
+  """
+  JsonData = ''
+
+  try:
+    with open(pJsonFile, 'r') as jsonFile:
+      JsonData = json.load(jsonFile)
+      pJsonFile = False
+
+  except Exception as e:
+    pJsonFile = True
+    pLogger.error('GetJsonFromFile - We had some unforseen error!')
+    pLogger.error('Exception Information= ')
+    pLogger.error(sys.exc_info()[0])
+    pLogger.error(sys.exc_info()[1])
+    pLogger.error(sys.exc_info()[2])    
+
+  return JsonData
 
 # This is a Function template:
 # ###################################################################################
