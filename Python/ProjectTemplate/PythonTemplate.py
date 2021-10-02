@@ -55,6 +55,7 @@ print("")
 
 # Platform agnostic way to get User
 Username = getpass.getuser()
+# Username = os.environ["USERNAME"]
 
 # Parameters to Script:
 global ThisScript
@@ -66,10 +67,6 @@ global LogPath
 global LogFile
 
 global MyScriptLogger
-
-# Logging (File):
- config.LogPath = "C:\Temp\Log"
- config.LogFile = "MyScript.log"
   
 # For Info and up logging
 config.LogLevel = logging.INFO
@@ -83,6 +80,33 @@ ScriptVersion = '0.0.1'
 
 #---------------------------------------------------------[Functions]--------------------------------------------------------
   
+  # ###################################################################################
+# Function: InitScriptLogging
+# Description:  Initialize the Scripts logging
+# Parameters: None
+#
+def InitScriptLogging():
+  # Initialize the default logging system:
+  config.LogPath = "C:\Temp\Log"
+  config.LogFile = "MyScript.log" 
+  #print("Log File Name = " + os.path.join(LogPath, LogFile))
+  
+  # Check if Log directory exists, if it doens't create it
+  DirExists = os.path.isdir(config.LogPath)
+  if DirExists==False:
+    try:
+      os.mkdir(config.LogPath)
+    except OSError:
+      print("Creation of the directory %s failed" % config.LogPath)
+    else:
+      print("Successfully created the directory %s" % config.LogPath) 
+  
+
+  # Create our Logger
+  MyScriptLogger = genfunc.CreateLogger(__name__, os.path.join(config.LogPath, config.LogFile),config.LogLevel)
+
+  return MyScriptLogger
+
 # ###################################################################################
 # Function: ProcessParams
 def ProcessParams(argv):
@@ -161,6 +185,7 @@ if __name__ == '__main__':
     MyScriptLogger.info("MyScript script Ended at " + genfunc.GetCurrentDateTime() + ".")
     MyScriptLogger.error("Execution failed.")
     MyScriptLogger.error("Exception Information: ")
+    MyScriptLogger.error(str(e))
     MyScriptLogger.error(sys.exc_info()[0])
     MyScriptLogger.error(sys.exc_info()[1])
     MyScriptLogger.error(sys.exc_info()[2])

@@ -29,6 +29,7 @@ _modules = [
             'sys',
             'tempfile',
             'time',
+            'uuid',
            ]
 
 for module in _modules:
@@ -101,7 +102,7 @@ def CreateConsoleLogger(LoggerName, Loglevel):
   LogFileHandler = logging.StreamHandler(sys.stdout)
     
   # Set the Logging Format
-  formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+  formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s - %(message)s')
   LogFileHandler.setFormatter(formatter)
   LogFileHandler.setLevel(Loglevel)
 
@@ -186,7 +187,7 @@ def CreateFileLogger(LoggerName, FileName, Loglevel):
   LogFileHandler = logging.handlers.RotatingFileHandler(FileName, mode='a', maxBytes=10485760, backupCount=5)
     
   # Set the Logging Format
-  formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+  formatter = logging.Formatter('%(asctime)s %(levelname)s: %(name)s - %(message)s')
   LogFileHandler.setFormatter(formatter)
 
   # Check for existing handlers - if any clear them:
@@ -359,10 +360,6 @@ def Chmod0777(FileName):
 
 # ###################################################################################
 # Function: GetTempDir()
-# Description: This will return a platform agnostic Temp directory location.
-# Parameters: None
-# Return: Temp Directory Location
-#
 def GetTempDir():
   """
   Function: GetTempDir()
@@ -497,7 +494,55 @@ def PrintStatInfo(StatPath):
   print("***************************************************************************************************************")
 
   return
+
+  # ###################################################################################
+# Function: GetEnvironmentVariables()
+def GetEnvironmentVariables():
+  """
+  Function: GetEnvironmentVariables()
+  Description: This will return a list of all Environment Variables.
+  Parameters: Logger
+  Note: To print out returned environment variables use something like:
+  print('Environment Variables: {0}'.format(str(all_env_vars)))
+  Or if using a logger:
+  MyLogger.info('Environment Variables: {0}'.format(str(all_env_vars)))
+  Return: All Environment Variables (dict)
+  """
+ 
+  all_env_vars = os.environ.items()
   
+
+  return all_env_vars
+
+# ###################################################################################
+# Function: GetEnvironmentVariable()
+def GetEnvironmentVariable(envvar):
+  """
+  Function: GetEnvironmentVariable()
+  Description: This will return an Environment Variables value.
+  Parameters: Environment Variable
+  Return: An Environment Variables value.
+  """
+ 
+  env_var = os.environ[envvar]
+
+  return env_var
+
+# ###################################################################################
+# Function: SetEnvironmentVariable()
+def SetEnvironmentVariable(envvarname, envvarvalue):
+  """
+  Function: SetEnvironmentVariable()
+  Description: This will set an Environment Variable
+  Parameters: Environment Variable Name
+              Environment Variable  Value
+  Return: None
+  """
+ 
+  os.environ[envvarname] = envvarvalue
+
+  return
+
 # ###################################################################################
 # Function: cmp
 def cmp(x, y):
@@ -527,8 +572,7 @@ def cmp(x, y):
 
 # ###################################################################################
 # Function: genrandom
-#
-def genrandom(numfrom, numto):
+#def genrandom(numfrom, numto):
   """
   Function: genrandom
   Description: Generates a Random Number between 2 passed in numbers
@@ -544,7 +588,20 @@ def genrandom(numfrom, numto):
 
   return randomnumber
 
+# ###################################################################################
+# Function: genuuid
+def genuuid():
+  """
+  Function: genuuid
+  Description: Generates a UUID
+  Parameters: None
+  Returns: UUID
+  """
 
+  id_uuid = uuid.uuid4()
+  print('UUID: {0}'.format(str(id_uuid)))
+
+  return id_uuid
 # ###################################################################################
 # Function: str2bool
 def String2Bool(BooleanString):
