@@ -235,9 +235,9 @@ def GetCurrentDate():
   Returns: Current Date
   """
   
-  Current_Time = datetime.datetime.now()
+  Current_Time = datetime.datetime.now().strftime("%Y-%m-%d")
 
-  return Current_Time.strftime("%Y-%m-%d")
+  return Current_Time
 
 
 
@@ -252,9 +252,9 @@ def GetCurrentDateTime():
   Returns: Current Date and Time
   """
   
-  Current_Time = datetime.datetime.now()
+  Current_Time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-  return Current_Time.strftime("%Y-%m-%d %H:%M:%S")
+  return Current_Time
 
 
 # ###################################################################################
@@ -272,6 +272,46 @@ def GetReadableDateTime(TimeInSeconds):
   ts = time.localtime(TimeInSeconds)
   
   return time.strftime("%m/%d/%Y %H:%M:%S", ts)
+
+# ###################################################################################
+# Function: ConvertSecondstoHHMMSS
+def ConvertSecondstoHHMMSS(TimeInSeconds):
+  """
+  Function: ConvertSecondstoHHMMSS
+  Description: Will return time in HH_MM_SS from seconds.
+  Parameters: TimeInSeconds: Time in seconds
+  Return: Readable HH:MM:SS
+  """
+  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(seconds))
+	
+  return hh_mm_ss
+
+# ###################################################################################
+# Function: ConvertMillisecondsToHHMMSS
+def ConvertMillisecondsToHHMMSS(TimeInMilliSeconds):
+  """
+  Function: ConvertMillisecondsToHHMMSS
+  Description: Will return time in HH_MM_SS from seconds.
+  Parameters: TimeInMilliSeconds: Time in milliseconds
+  Return: Readable HH:MM:SS
+  """
+  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(float(milliseconds) / 1000.0))
+  
+  return hh_mm_ss
+
+# ###################################################################################
+# Function: ConvertHHMMSSToSeconds
+def ConvertHHMMSSToSeconds(TimeString):
+  """
+  Function: ConvertHHMMSSToSeconds
+  Description: Will return time in seconds From a Time String.
+  Parameters: TimeString: Time in string format (HH:MM:SS)
+  Return: Seconds
+  """
+  h, m, s = time_str.split(':')
+  seconds = int(h) * 3600 + int(m) * 60 + int(s)
+
+  return seconds
 
 
 # ###################################################################################
