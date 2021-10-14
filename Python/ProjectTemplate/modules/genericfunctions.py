@@ -282,7 +282,7 @@ def ConvertSecondstoHHMMSS(TimeInSeconds):
   Parameters: TimeInSeconds: Time in seconds
   Return: Readable HH:MM:SS
   """
-  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(seconds))
+  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(TimeInSeconds))
 	
   return hh_mm_ss
 
@@ -295,7 +295,7 @@ def ConvertMillisecondsToHHMMSS(TimeInMilliSeconds):
   Parameters: TimeInMilliSeconds: Time in milliseconds
   Return: Readable HH:MM:SS
   """
-  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(float(milliseconds) / 1000.0))
+  hh_mm_ss = time.strftime('%H:%M:%S', time.gmtime(float(TimeInMilliSeconds) / 1000.0))
   
   return hh_mm_ss
 
@@ -308,7 +308,7 @@ def ConvertHHMMSSToSeconds(TimeString):
   Parameters: TimeString: Time in string format (HH:MM:SS)
   Return: Seconds
   """
-  h, m, s = time_str.split(':')
+  h, m, s = TimeString.split(':')
   seconds = int(h) * 3600 + int(m) * 60 + int(s)
 
   return seconds
@@ -612,7 +612,7 @@ def cmp(x, y):
 
 # ###################################################################################
 # Function: genrandom
-#def genrandom(numfrom, numto):
+def genrandom(numfrom, numto):
   """
   Function: genrandom
   Description: Generates a Random Number between 2 passed in numbers
