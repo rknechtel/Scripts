@@ -16,6 +16,7 @@
 # ---------------------------------------------------------[Imports]------------------------------------------------------
 
 _modules = [
+            'csv',
             'datetime',
             'io',
             'json',
@@ -668,45 +669,55 @@ def String2Bool(BooleanString):
 
   return returnbool
 
-
-####################################################################################
-# Function: GetJsonFromFile
-# Description: Read JSON Data from a File 
-# Parameters: pLogger: Logger
-#             pJsonFile: JSON Full File Path 
-# Example Call:
-# GetJsonFromFile(C:\Temp\MyFile.json)
-#
-def GetJsonFromFile(pLogger, pJsonFile):
+# #########################################################
+# Function: GetCSVRecords
+def GetCSVRecords(LoggerName, FileNameCSV):
   """
-  Function: GetJsonFromFile
-  Description: Read JSON Data from a File 
-  Parameters: pLogger: Logger
-              pJsonFile: JSON Full File Path 
-  Example Call:
-  GetJsonFromFile(C:\Temp\MyFile.json)
+  Function: GetCSVRecords
+  Description: Gets CSV File Records. Put into a list of dict's
+               .csv file MUST contain a column headers row!
+  Parameters: CSV File Name
+  Return: list[(dicts)] CSV File Records
   """
-  JsonData = ''
-
+  
+  LoggerName.info('Starting GetRecords()')
+  
+  headers_list = []
+  records_list = []
+  index = 0
+  
   try:
-    with open(pJsonFile, 'r') as jsonFile:
-      JsonData = json.load(jsonFile)
-      pJsonFile = False
-
+    
+    # Convert our CSV File into alist of dicts
+    with open(FileNameCSV, 'r') as data:
+      for line in csv.reader(data):
+        index += 1
+        if index > 1:
+            records_dict = {}
+            for i, elem in enumerate(headers_list):
+                records_dict[elem] = line[i]
+            records_list.append(records_dict)
+        else:
+            headers_list = list(line)
+      
+      # LoggerName.info("GetRecords() - records_list = {0}".format(str(records_list)))
+      
   except Exception as e:
-    pJsonFile = True
-    pLogger.error('GetJsonFromFile - We had some unforseen error!')
-    pLogger.error('Exception Information= ')
-    pLogger.error(sys.exc_info()[0])
-    pLogger.error(sys.exc_info()[1])
-    pLogger.error(sys.exc_info()[2])    
+      LoggerName.error('genericfunctions.py - GetRecords() had an error. See the Error below for details.')
+      LoggerName.error('Execution failed.')
+      LoggerName.error('Exception Information = ')
+      LoggerName.error(sys.exc_info()[0])
+      LoggerName.error(sys.exc_info()[1])
+      LoggerName.error(sys.exc_info()[2])
+      LoggerName.error('')
+  
+  return records_list
 
-  return JsonData
 
 # This is a Function template:
 # ###################################################################################
 # Function:
-def MyFuncation(Param1, Param2):
+def MyFunction(Param1, Param2):
   """
   Function:
   Description:

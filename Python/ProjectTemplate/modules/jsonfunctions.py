@@ -100,13 +100,20 @@ def GetJSONFromURL(pLogger, pHasError, pUrl):
 ####################################################################################
 # Function: GetJsonFromFile
 # Description: Read JSON Data from a File 
-# Parameters: Logger
-#             HasError
-#             JSON Full File Path 
+# Parameters: pLogger: Logger
+#             pJsonFile: JSON Full File Path 
 # Example Call:
 # GetJsonFromFile(C:\Temp\MyFile.json)
 #
-def GetJsonFromFile(pLogger, pHasError, pJsonFile):
+def GetJsonFromFile(pLogger, pJsonFile):
+  """
+  Function: GetJsonFromFile
+  Description: Read JSON Data from a File 
+  Parameters: pLogger: Logger
+              pJsonFile: JSON Full File Path 
+  Example Call:
+  GetJsonFromFile(C:\Temp\MyFile.json)
+  """
   JsonData = ''
 
   try:
@@ -116,9 +123,14 @@ def GetJsonFromFile(pLogger, pHasError, pJsonFile):
 
   except Exception as e:
     pJsonFile = True
-    pLogger.error("GetJsonFromFile - Exception Information = " + traceback.format_exc())
+    pLogger.error('GetJsonFromFile - We had some unforseen error!')
+    pLogger.error('Exception Information= ')
+    pLogger.error(sys.exc_info()[0])
+    pLogger.error(sys.exc_info()[1])
+    pLogger.error(sys.exc_info()[2])    
 
   return JsonData
+
 
 ####################################################################################
 # Function: RecursivelyParseJson
