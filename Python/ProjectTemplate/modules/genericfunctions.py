@@ -139,7 +139,7 @@ def InitScriptFileLogging(logger_name, log_path, file_name, log_level):
   
 
   # Create our Logger
-  MyScriptLogger = CreateFileLogger(__name__, os.path.join(log_path, file_name), log_level)
+  MyScriptLogger = CreateFileLogger(logger_name, os.path.join(log_path, file_name), log_level)
 
   return MyScriptLogger
 
