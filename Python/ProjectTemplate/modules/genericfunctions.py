@@ -368,17 +368,17 @@ def Remove(Path):
   Return: None
   """
   # Remove the file or directory
-  if os.path.isdir(path):
+  if os.path.isdir(Path):
       try:
-          os.rmdir(path)
+          os.rmdir(Path)
       except OSError as ose:
-          print("Remove(): Unable to remove folder: %s" % path, ose)
+          print("Remove(): Unable to remove folder: {0}".format(Path), ose)
   else:
       try:
-          if os.path.exists(path):
-              os.remove(path)
+          if os.path.exists(Path):
+              os.remove(Path)
       except OSError as ose:
-          print("Remove(): Unable to remove file: %s" % path, ose)
+          print("Remove(): Unable to remove file: {0}".format(Path), ose)
   return
 
 # ###################################################################################
@@ -476,13 +476,13 @@ def Purge(PurgeDirectory, NumDays):
           # stat.st_size = size of file, in bytes.
           # stat.st_mtime = time of most recent content modification.
           if stat.st_mtime <= TimeInSeconds:
-              print("Purge(): Removing File: " + FullPath + " with file size of " + stat.st_size + " bytes")
-              remove(FullPath)
+              print("Purge(): Removing File: {0} with file size of {1} bytes".format(FullPath,str(stat.st_size)))
+              Remove(FullPath)
 
       # Commented out - only use if we want to remover the "root" directory itself
       # we are deleting files from.
       # if not os.listdir(root):
-      #    remove(root)
+      #    Remove(root)
 
   return
 
