@@ -359,6 +359,45 @@ def MoveFile(From, To, MyLogger):
 
 
 # ###################################################################################
+# Function: IsFileDeletable
+def IsFileDeletable(FilePath):
+
+  """
+  Function: IsFileDeletable
+  Description: Checks if a File is deletable
+  Parameters: Full File Path
+  Return: boolean (True/False)
+          return True if file is deletable, False otherwise
+  """
+
+  # get the directory name of FilePath
+  FileDirname = os.path.dirname(FilePath)
+
+  # if FilePath exists and is a file
+  if os.path.isfile(FilePath): 
+
+    # if FilePath has write permission
+    if os.access(FilePath, os.W_OK):
+
+      # if directory containing FilePath has write and execute premisions
+      if os.access(FileDirname, os.W_OK | os.X_OK):
+
+        # if FilePath can be opened for write
+        try:
+          file = open(FilePath, 'w')
+          file.close()
+          # FilePath is not locked
+          return True
+
+        # if FilePath can't be opened for write
+        except OSError:
+          # FilePath is locked
+          logging.info("ERROR: IsFileDeletable(): File {0} is locked and connot be deleted.".format(FilePath))
+          pass
+
+  return False
+
+# ###################################################################################
 # Function: Remove
 def Remove(Path):
   """
