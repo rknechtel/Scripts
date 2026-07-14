@@ -15,14 +15,14 @@
 #
 #
 # Example Call (bash)
-# source getecsips.sh
+# source getecsips.sh Cluster-services Cluster-services Cluster-operations
 #
 #
 # *********************************************************************
 
-CLUSTERSERVICES=ECSCluster-services-prod
-CLUSTERINTEGRATIONS=ECSCluster-integrations-prod
-CLUSTEROPERATIONS=ECSCluster-operations-prod
+CLUSTERSERVICES=$1
+CLUSTERINTEGRATIONS=$2
+CLUSTEROPERATIONS=$3
 REGION=us-east-1
 
 echo 

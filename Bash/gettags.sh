@@ -22,7 +22,7 @@
 #
 #
 # Example Call (bash)
-# ./gettags.sh
+# ./gettags.sh <USERNAME>
 #
 #
 # *********************************************************************
@@ -33,12 +33,14 @@ echo
 echo "Note: Must be authenticated to AWS to run this!"
 echo
 
+USER_NAME=$1
+
 # Get the Tags for AWS Users
 echo
 echo "Start Getting Tags for AWS IAM Users"
 echo
 
-aws iam list-user-tags --user-name me | jq -c >meTags.json
+aws iam list-user-tags --user-name $USER_NAME | jq -c >$USER_NAME-Tags.json
 
 echo
 echo "Done with getting Tags for AWS IAM Users"

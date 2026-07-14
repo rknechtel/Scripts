@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # *********************************************************************
-# Script: s3storagesizes.sh.sh
+# Script: s3storagesizes.sh
 # Author: Richard Knechtel
 # Date: 01/12/2026
 # Description: Count S3 objects by size threshold
@@ -21,8 +21,8 @@
 #       sudo ./aws/install
 #
 # Example Call (bash)
-#   ./s3storagesizes.sh.sh my-bucket
-#   ./s3storagesizes.sh.sh my-bucket --prefix some/path/ --profile prod --region us-west-2
+#   ./s3storagesizes.sh my-bucket
+#   ./s3storagesizes.sh my-bucket --prefix some/path/ --profile prod --region us-west-2
 #
 # *********************************************************************
 

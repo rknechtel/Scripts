@@ -21,7 +21,7 @@
 # - Run in the us-east-1 region (or set --region us-east-1 explicitly)
 #
 # Example Call (bash)
-# ./liststoppedinstances.sh.sh
+# ./liststoppedinstances.sh
 #
 # *********************************************************************
  

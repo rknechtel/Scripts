@@ -16,20 +16,16 @@
 #
 #
 # Example Call (bash)
-# source getcloudwatchevents.sh
+# ./getcloudwatchevents.sh "/aws/lambda/MyLambda/" "a2ebH56"
 #
 #
 # *********************************************************************
 
-GROUP="/aws/elasticbeanstalk/jsreport2-prod/var/log/nginx/access.log"
+GROUP=$1
 
 # Log Streams:
 # Log stream	Last event time
-# i-0d5066f5ba7bc3df5	2025-09-02 16:47:31 (UTC)
-# i-08c42d02bb8d00b61	2025-09-02 16:47:21 (UTC)
-# i-097ccc4444fe63fe2	2025-08-31 10:17:15 (UTC)
-# i-072faa705d4071b39	2025-08-31 10:14:15 (UTC)
-STREAM="i-072faa705d4071b39"
+STREAM=$2
 
 # Build epoch-millis (portable)
 START=$(( $(date -d '2025-08-31T00:00:00Z' +%s) * 1000 ))   # GNU date

@@ -1,6 +1,6 @@
    #!/bin/bash
 # *********************************************************************
-# Script:getecr.sh
+# Script:getecrlist.sh
 # Author: Richard Knechtel
 # Date: 06/02/2025
 # Description: This will get a list of ECR resources
@@ -19,7 +19,7 @@
 # Immportant: These work in Bash - they have issues in ZShell.
 #
 # Example Call (bash)
-# ./getecs.sh
+# ./getecrlist.sh
 #
 # *********************************************************************
 
@@ -30,9 +30,6 @@
 # Get parameters
 #printf Parameters Passed = $1
 #printf
-
-
-# Works:
 
 # repositories[*]
 # .repositoryArn

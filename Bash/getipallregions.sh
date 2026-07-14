@@ -15,7 +15,7 @@
 # Parameter: IP4 Address
 #
 # Example Call (bash)
-# source getecsips.sh
+# ./getipsallregions.sh
 #
 #
 # *********************************************************************

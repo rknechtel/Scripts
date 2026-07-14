@@ -19,7 +19,7 @@
 # Immportant: These work in Bash - they have issues in ZShell.
 #
 # Example Call (bash)
-# ./getecs.sh
+# ./getecr.sh
 #
 # *********************************************************************
 
@@ -32,7 +32,6 @@
 #printf
 
 
-# Works:
 
 # repositories[*]
 # .repositoryArn

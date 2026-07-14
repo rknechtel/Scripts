@@ -1,9 +1,9 @@
 #!/bin/bash
 # *********************************************************************
-# Script:getecr.sh
+# Script:getecrimagelist.sh
 # Author: Richard Knechtel
 # Date: 06/02/2025
-# Description: This will get a list of ECR resources
+# Description: This will get a list of ECR images
 #
 # Parameters: 
 #
@@ -19,7 +19,7 @@
 # Immportant: These work in Bash - they have issues in ZShell.
 #
 # Example Call (bash)
-# ./getecs.sh
+# ./getecrimagelist.sh
 #
 # *********************************************************************
 
